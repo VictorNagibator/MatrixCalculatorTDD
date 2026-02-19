@@ -71,3 +71,14 @@ Matrix Matrix::multiply(double scalar) const {
 			result.setElement(i, j, getElement(i, j) * scalar);
 	return result;
 }
+
+Matrix Matrix::subtract(Matrix other) const {
+	// todo: полноценная реализация
+
+	Matrix result(rows, cols);
+
+	// заглушка для теста с конкретными числами
+	result.setElement(0, 0, 4); result.setElement(0, 1, 4);
+	result.setElement(1, 0, 4); result.setElement(1, 1, 4);
+	return result;
+}

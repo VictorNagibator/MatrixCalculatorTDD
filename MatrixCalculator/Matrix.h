@@ -16,6 +16,7 @@ public:
 	Matrix add(Matrix another) const;
 	Matrix multiply(Matrix another) const;
 	Matrix multiply(double scalar) const;
+	Matrix subtract(Matrix another) const;
 private:
 	int rows = 0;
 	int cols = 0;
