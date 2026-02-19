@@ -59,5 +59,23 @@ namespace MatrixCalculatorTests
 				};
 			Assert::ExpectException<std::invalid_argument>(func);
 		}
+
+		TEST_METHOD(AddMatrixSameSize)
+		{
+			Matrix a(2, 2);
+			a.setElement(0, 0, 1); a.setElement(0, 1, 1);
+			a.setElement(1, 0, 1); a.setElement(1, 1, 1);
+
+			Matrix b(2, 2);
+			b.setElement(0, 0, 2); b.setElement(0, 1, 2);
+			b.setElement(1, 0, 2); b.setElement(1, 1, 2);
+
+			Matrix c = a.add(b);
+
+			Assert::AreEqual(3.0, c.getElement(0, 0));
+			Assert::AreEqual(3.0, c.getElement(0, 1));
+			Assert::AreEqual(3.0, c.getElement(1, 0));
+			Assert::AreEqual(3.0, c.getElement(1, 1));
+		}
 	};
 }
