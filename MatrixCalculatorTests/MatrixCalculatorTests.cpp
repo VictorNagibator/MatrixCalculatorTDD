@@ -77,5 +77,15 @@ namespace MatrixCalculatorTests
 			Assert::AreEqual(3.0, c.getElement(1, 0));
 			Assert::AreEqual(3.0, c.getElement(1, 1));
 		}
+
+		TEST_METHOD(AddMatrixDifferentSize)
+		{
+			Matrix a(2, 2), b(3, 3);
+
+			auto func = [&] {
+				Matrix c = a.add(b); // складываем матрицы разных размеров - исключение
+				};
+			Assert::ExpectException<std::invalid_argument>(func);
+		}
 	};
 }
