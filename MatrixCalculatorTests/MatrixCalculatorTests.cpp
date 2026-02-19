@@ -2,6 +2,8 @@
 #include "CppUnitTest.h"
 #include "../MatrixCalculator/matrix.h"
 #include "../MatrixCalculator/matrix.cpp"
+#include "../MatrixCalculator/sparsematrix.h"
+#include "../MatrixCalculator/sparsematrix.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -113,6 +115,18 @@ namespace MatrixCalculatorTests
 				Matrix c = a.multiply(b); // умножаем матрицы неподходящих размеров - исключение
 				};
 			Assert::ExpectException<std::invalid_argument>(func);
+		}
+	};
+
+	TEST_CLASS(SparseMatrixTest)
+	{
+	public:
+		TEST_METHOD(CanCreateSparseMatrix)
+		{
+			SparseMatrix m(5, 5);
+
+			Assert::AreEqual(5, m.getRows());
+			Assert::AreEqual(5, m.getCols());
 		}
 	};
 }
