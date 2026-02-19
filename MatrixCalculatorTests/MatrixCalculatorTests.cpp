@@ -128,5 +128,14 @@ namespace MatrixCalculatorTests
 			Assert::AreEqual(5, m.getRows());
 			Assert::AreEqual(5, m.getCols());
 		}
+
+		TEST_METHOD(SparseSetAndGet)
+		{
+			SparseMatrix m(10, 10);
+			m.setElement(2, 3, 5.0);
+
+			Assert::AreEqual(5.0, m.getElement(2, 3));
+			Assert::AreEqual(0.0, m.getElement(0, 0));
+		}
 	};
 }
