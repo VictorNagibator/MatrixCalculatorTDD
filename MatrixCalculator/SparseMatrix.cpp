@@ -1,4 +1,5 @@
 #include "SparseMatrix.h"
+#include <stdexcept>
 
 SparseMatrix::SparseMatrix(int rows, int cols)
 {
@@ -32,9 +33,25 @@ double SparseMatrix::getElement(int i, int j) const {
 
 SparseMatrix SparseMatrix::add(SparseMatrix other) const
 {
-    // todo: полноценная реализация
-    SparseMatrix result(rows, cols);
+    if (rows != other.rows || cols != other.cols)
+        throw std::invalid_argument("SparseMatrix dimensions must match for addition!");
 
-    result.setElement(0, 0, 5); result.setElement(1, 1, 7); result.setElement(2, 2, 9);
+    SparseMatrix result(rows, cols);
+    // копируем все ненулевые элементы из текущей матрицы
+    for (const auto& entry : data) {
+        size_t i = entry.first.first;
+        size_t j = entry.first.second;
+        double val = entry.second;
+        result.setElement(i, j, val);
+    }
+
+    // добавляем элементы из other
+    for (const auto& entry : other.data) {
+        size_t i = entry.first.first;
+        size_t j = entry.first.second;
+        double val = entry.second;
+        double newVal = result.getElement(i, j) + val;
+        result.setElement(i, j, newVal);
+    }
     return result;
 }
