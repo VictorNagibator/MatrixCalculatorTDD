@@ -116,6 +116,21 @@ namespace MatrixCalculatorTests
 				};
 			Assert::ExpectException<std::invalid_argument>(func);
 		}
+
+		TEST_METHOD(MultiplyByScalar)
+		{
+			Matrix a(2, 2);
+			a.setElement(0, 0, 1); a.setElement(0, 1, 2);
+			a.setElement(1, 0, 3); a.setElement(1, 1, 4);
+
+			double scalar = 2.5;
+			Matrix c = a.multiply(scalar);
+
+			Assert::AreEqual(2.5, c.getElement(0, 0));
+			Assert::AreEqual(5.0, c.getElement(0, 1));
+			Assert::AreEqual(7.5, c.getElement(1, 0));
+			Assert::AreEqual(10.0, c.getElement(1, 1));
+		}
 	};
 
 	TEST_CLASS(SparseMatrixTest)
