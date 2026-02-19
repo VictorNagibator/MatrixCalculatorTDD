@@ -149,6 +149,24 @@ namespace MatrixCalculatorTests
 			Assert::AreEqual(4.0, c.getElement(1, 0));
 			Assert::AreEqual(4.0, c.getElement(1, 1));
 		}
+
+		TEST_METHOD(SubtractMatricesOtherValues)
+		{
+			Matrix a(2, 2);
+			a.setElement(0, 0, 10); a.setElement(0, 1, 20);
+			a.setElement(1, 0, 30); a.setElement(1, 1, 40);
+
+			Matrix b(2, 2);
+			b.setElement(0, 0, 1); b.setElement(0, 1, 2);
+			b.setElement(1, 0, 3); b.setElement(1, 1, 4);
+
+			Matrix c = a.subtract(b);
+
+			Assert::AreEqual(9.0, c.getElement(0, 0));
+			Assert::AreEqual(18.0, c.getElement(0, 1));
+			Assert::AreEqual(27.0, c.getElement(1, 0));
+			Assert::AreEqual(36.0, c.getElement(1, 1));
+		}
 	};
 
 	TEST_CLASS(SparseMatrixTest)
