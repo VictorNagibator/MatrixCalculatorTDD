@@ -87,7 +87,6 @@ double Matrix::determinant() const {
 	if (rows != cols)
 		throw std::invalid_argument("Determinant is defined only for square matrices");
 
-	// todo: общая реализация (сейчас только 2 на 2 и 1 на 1)
 	if (rows == 2) {
 		return getElement(0, 0) * getElement(1, 1) - getElement(0, 1) * getElement(1, 0);
 	}
@@ -95,5 +94,22 @@ double Matrix::determinant() const {
 		return getElement(0, 0);
 	}
 
-	return 0.0; // заглушка для других размеров
+	// общий случай: разложение по первой строке (простой рекурсивный вариант)
+	double det = 0.0;
+	int sign = 1;
+	for (int j = 0; j < rows; ++j) {
+		// создаём минор (rows - 1) x (rows - 1) без 0-й строки и j-го столбца
+		Matrix minor(rows - 1, rows - 1);
+		for (int i = 1; i < rows; ++i) {
+			int colDest = 0;
+			for (int k = 0; k < rows; ++k) {
+				if (k == j) continue;
+				minor.setElement(i - 1, colDest, getElement(i, k));
+				++colDest;
+			}
+		}
+		det += sign * getElement(0, j) * minor.determinant();
+		sign = -sign;
+	}
+	return det;
 }
