@@ -26,6 +26,6 @@ void SparseMatrix::setElement(int i, int j, double value) {
 double SparseMatrix::getElement(int i, int j) const {
     auto it = data.find({ i, j });
 
-    // åñëè íå íàéäåí, òî 0 (â ðàçðÿæåííûõ ìàòðèöàõ òàê)
+    // ÐµÑÐ»Ð¸ Ð½Ðµ Ð½Ð°Ð¹Ð´ÐµÐ½, Ñ‚Ð¾ 0 (Ð² Ñ€Ð°Ð·Ñ€ÑÐ¶ÐµÐ½Ð½Ñ‹Ñ… Ð¼Ð°Ñ‚Ñ€Ð¸Ñ†Ð°Ñ… Ñ‚Ð°Ðº)
     return (it != data.end()) ? it->second : 0.0;
 }

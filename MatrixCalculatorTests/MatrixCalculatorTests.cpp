@@ -15,21 +15,21 @@ namespace MatrixCalculatorTests
 		TEST_METHOD(CanCreate)
 		{
 			Matrix m;
-			Assert::IsTrue(true); // если компилируется, значит, фактически тест пройден
+			Assert::IsTrue(true); // РµСЃР»Рё РєРѕРјРїРёР»РёСЂСѓРµС‚СЃСЏ, Р·РЅР°С‡РёС‚, С„Р°РєС‚РёС‡РµСЃРєРё С‚РµСЃС‚ РїСЂРѕР№РґРµРЅ
 		}
 
 		TEST_METHOD(CanCreateWithSize)
 		{
 			Matrix m(3, 4);
-			Assert::AreEqual(3, m.getRows()); // проверка количества строк
-			Assert::AreEqual(4, m.getCols()); // проверка количества столбцов
+			Assert::AreEqual(3, m.getRows()); // РїСЂРѕРІРµСЂРєР° РєРѕР»РёС‡РµСЃС‚РІР° СЃС‚СЂРѕРє
+			Assert::AreEqual(4, m.getCols()); // РїСЂРѕРІРµСЂРєР° РєРѕР»РёС‡РµСЃС‚РІР° СЃС‚РѕР»Р±С†РѕРІ
 		}
 
 		TEST_METHOD(CanCreateWithAnotherSize)
 		{
 			Matrix m(100, 20);
-			Assert::AreEqual(100, m.getRows()); // проверка количества строк
-			Assert::AreEqual(20, m.getCols()); // проверка количества столбцов
+			Assert::AreEqual(100, m.getRows()); // РїСЂРѕРІРµСЂРєР° РєРѕР»РёС‡РµСЃС‚РІР° СЃС‚СЂРѕРє
+			Assert::AreEqual(20, m.getCols()); // РїСЂРѕРІРµСЂРєР° РєРѕР»РёС‡РµСЃС‚РІР° СЃС‚РѕР»Р±С†РѕРІ
 		}
 
 		TEST_METHOD(SetAndGetElement)
@@ -45,7 +45,7 @@ namespace MatrixCalculatorTests
 			Matrix m(2, 2);
 
 			auto func = [&] { 
-				// явно выход за границы
+				// СЏРІРЅРѕ РІС‹С…РѕРґ Р·Р° РіСЂР°РЅРёС†С‹
 				m.setElement(3, 3, 5.0); 
 				};
 			Assert::ExpectException<std::invalid_argument>(func);
@@ -56,7 +56,7 @@ namespace MatrixCalculatorTests
 			Matrix m(2, 2);
 
 			auto func = [&] {
-				// явно выход за границы
+				// СЏРІРЅРѕ РІС‹С…РѕРґ Р·Р° РіСЂР°РЅРёС†С‹
 				m.getElement(3, 3);
 				};
 			Assert::ExpectException<std::invalid_argument>(func);
@@ -85,7 +85,7 @@ namespace MatrixCalculatorTests
 			Matrix a(2, 2), b(3, 3);
 
 			auto func = [&] {
-				Matrix c = a.add(b); // складываем матрицы разных размеров - исключение
+				Matrix c = a.add(b); // СЃРєР»Р°РґС‹РІР°РµРј РјР°С‚СЂРёС†С‹ СЂР°Р·РЅС‹С… СЂР°Р·РјРµСЂРѕРІ - РёСЃРєР»СЋС‡РµРЅРёРµ
 				};
 			Assert::ExpectException<std::invalid_argument>(func);
 		}
@@ -112,7 +112,7 @@ namespace MatrixCalculatorTests
 			Matrix a(2, 2), b(3, 3);
 
 			auto func = [&] {
-				Matrix c = a.multiply(b); // умножаем матрицы неподходящих размеров - исключение
+				Matrix c = a.multiply(b); // СѓРјРЅРѕР¶Р°РµРј РјР°С‚СЂРёС†С‹ РЅРµРїРѕРґС…РѕРґСЏС‰РёС… СЂР°Р·РјРµСЂРѕРІ - РёСЃРєР»СЋС‡РµРЅРёРµ
 				};
 			Assert::ExpectException<std::invalid_argument>(func);
 		}
