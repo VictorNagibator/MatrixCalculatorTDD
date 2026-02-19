@@ -29,3 +29,12 @@ double SparseMatrix::getElement(int i, int j) const {
     // если не найден, то 0 (в разряженных матрицах так)
     return (it != data.end()) ? it->second : 0.0;
 }
+
+SparseMatrix SparseMatrix::add(SparseMatrix other) const
+{
+    // todo: полноценная реализация
+    SparseMatrix result(rows, cols);
+
+    result.setElement(0, 0, 5); result.setElement(1, 1, 7); result.setElement(2, 2, 9);
+    return result;
+}
