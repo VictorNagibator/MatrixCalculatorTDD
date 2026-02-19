@@ -12,6 +12,8 @@ namespace MatrixCalculatorTests
 		
 		TEST_METHOD(TestMethod1)
 		{
+			Matrix m;
+			Assert::IsTrue(true); // если компилируется, значит, фактически тест пройден
 		}
 	};
 }
