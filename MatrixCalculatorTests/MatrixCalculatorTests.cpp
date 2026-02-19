@@ -37,5 +37,27 @@ namespace MatrixCalculatorTests
 			m.setElement(0, 0, 5.0);
 			Assert::AreEqual(5.0, m.getElement(0, 0));
 		}
+
+		TEST_METHOD(SetElementAtWrongPosition)
+		{
+			Matrix m(2, 2);
+
+			auto func = [&] { 
+				// явно выход за границы
+				m.setElement(3, 3, 5.0); 
+				};
+			Assert::ExpectException<std::invalid_argument>(func);
+		}
+
+		TEST_METHOD(GetElementAtWrongPosition)
+		{
+			Matrix m(2, 2);
+
+			auto func = [&] {
+				// явно выход за границы
+				m.getElement(3, 3);
+				};
+			Assert::ExpectException<std::invalid_argument>(func);
+		}
 	};
 }
