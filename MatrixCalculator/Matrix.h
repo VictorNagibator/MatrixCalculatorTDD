@@ -17,6 +17,7 @@ public:
 	Matrix multiply(Matrix another) const;
 	Matrix multiply(double scalar) const;
 	Matrix subtract(Matrix another) const;
+	double determinant() const;
 private:
 	int rows = 0;
 	int cols = 0;

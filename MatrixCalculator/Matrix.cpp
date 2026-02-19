@@ -82,3 +82,14 @@ Matrix Matrix::subtract(Matrix other) const {
 			result.setElement(i, j, getElement(i, j) - other.getElement(i, j));
 	return result;
 }
+
+double Matrix::determinant() const {
+	if (rows != cols)
+		throw std::invalid_argument("Determinant is defined only for square matrices");
+
+	// todo: общая реализация (сейчас только 2 на 2)
+	if (rows == 2 && cols == 2) {
+		return getElement(0, 0) * getElement(1, 1) - getElement(0, 1) * getElement(1, 0);
+	}
+	return 0.0; // заглушка для других размеров
+}
