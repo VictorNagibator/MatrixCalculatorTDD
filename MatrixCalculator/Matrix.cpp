@@ -37,7 +37,8 @@ void Matrix::setElement(int i, int j, double value)
 
 Matrix Matrix::add(Matrix another) const
 {
-	// todo: проверка размеров
+	if (rows != another.rows || cols != another.cols)
+		throw std::invalid_argument("Matrix sizes must match for addition!");
 
 	Matrix result(rows, cols);
 	for (int i = 0; i < rows; ++i)
