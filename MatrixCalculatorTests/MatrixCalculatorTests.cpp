@@ -29,5 +29,13 @@ namespace MatrixCalculatorTests
 			Assert::AreEqual(100, m.getRows()); // проверка количества строк
 			Assert::AreEqual(20, m.getCols()); // проверка количества столбцов
 		}
+
+		TEST_METHOD(SetAndGetElement)
+		{
+			Matrix m(2, 2);
+
+			m.setElement(0, 0, 5.0);
+			Assert::AreEqual(5.0, m.getElement(0, 0));
+		}
 	};
 }
