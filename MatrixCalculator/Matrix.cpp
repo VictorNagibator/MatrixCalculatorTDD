@@ -87,9 +87,13 @@ double Matrix::determinant() const {
 	if (rows != cols)
 		throw std::invalid_argument("Determinant is defined only for square matrices");
 
-	// todo: общая реализация (сейчас только 2 на 2)
-	if (rows == 2 && cols == 2) {
+	// todo: общая реализация (сейчас только 2 на 2 и 1 на 1)
+	if (rows == 2) {
 		return getElement(0, 0) * getElement(1, 1) - getElement(0, 1) * getElement(1, 0);
 	}
+	if (rows == 1) {
+		return getElement(0, 0);
+	}
+
 	return 0.0; // заглушка для других размеров
 }
