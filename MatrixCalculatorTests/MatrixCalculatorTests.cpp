@@ -87,5 +87,32 @@ namespace MatrixCalculatorTests
 				};
 			Assert::ExpectException<std::invalid_argument>(func);
 		}
+
+		TEST_METHOD(MultiplyMatrixCorrectSize)
+		{
+			Matrix a(2, 2);
+			a.setElement(0, 0, 1); a.setElement(0, 1, 2);
+			a.setElement(1, 0, 3); a.setElement(1, 1, 4);
+
+			Matrix e(2, 2);
+			e.setElement(0, 0, 1); e.setElement(1, 1, 1);
+
+			Matrix c = a.multiply(e);
+
+			Assert::AreEqual(1.0, c.getElement(0, 0));
+			Assert::AreEqual(2.0, c.getElement(0, 1));
+			Assert::AreEqual(3.0, c.getElement(1, 0));
+			Assert::AreEqual(4.0, c.getElement(1, 1));
+		}
+
+		TEST_METHOD(MultiplyMatrixDifferentSize)
+		{
+			Matrix a(2, 2), b(3, 3);
+
+			auto func = [&] {
+				Matrix c = a.multiply(b); // умножаем матрицы неподходящих размеров - исключение
+				};
+			Assert::ExpectException<std::invalid_argument>(func);
+		}
 	};
 }
