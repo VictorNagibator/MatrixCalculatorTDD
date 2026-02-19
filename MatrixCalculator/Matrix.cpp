@@ -73,12 +73,12 @@ Matrix Matrix::multiply(double scalar) const {
 }
 
 Matrix Matrix::subtract(Matrix other) const {
-	// todo: полноценная реализация
+	if (rows != other.rows || cols != other.cols)
+		throw std::invalid_argument("Matrix dimensions must match for subtraction!");
 
 	Matrix result(rows, cols);
-
-	// заглушка для теста с конкретными числами
-	result.setElement(0, 0, 4); result.setElement(0, 1, 4);
-	result.setElement(1, 0, 4); result.setElement(1, 1, 4);
+	for (int i = 0; i < rows; ++i)
+		for (int j = 0; j < cols; ++j)
+			result.setElement(i, j, getElement(i, j) - other.getElement(i, j));
 	return result;
 }
