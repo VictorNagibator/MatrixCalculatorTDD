@@ -167,6 +167,16 @@ namespace MatrixCalculatorTests
 			Assert::AreEqual(27.0, c.getElement(1, 0));
 			Assert::AreEqual(36.0, c.getElement(1, 1));
 		}
+
+		TEST_METHOD(Determinant2x2)
+		{
+			Matrix m(2, 2);
+			m.setElement(0, 0, 1); m.setElement(0, 1, 2);
+			m.setElement(1, 0, 3); m.setElement(1, 1, 4);
+
+			double det = m.determinant();
+			Assert::AreEqual(-2.0, det); // 1*4 - 2*3 = -2
+		}
 	};
 
 	TEST_CLASS(SparseMatrixTest)
