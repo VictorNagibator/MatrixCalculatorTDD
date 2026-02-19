@@ -46,3 +46,20 @@ Matrix Matrix::add(Matrix another) const
 			result.setElement(i, j, getElement(i, j) + another.getElement(i, j));
 	return result;
 }
+
+Matrix Matrix::multiply(Matrix another) const
+{
+	if (cols != another.rows)
+		throw std::invalid_argument("Matrix dimensions incompatible for multiplication");
+
+	Matrix result(rows, another.cols);
+	for (int i = 0; i < rows; ++i) {
+		for (int j = 0; j < another.cols; ++j) {
+			double sum = 0.0;
+			for (int k = 0; k < cols; ++k)
+				sum += getElement(i, k) * another.getElement(k, j);
+			result.setElement(i, j, sum);
+		}
+	}
+	return result;
+}

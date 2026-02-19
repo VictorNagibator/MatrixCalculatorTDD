@@ -14,6 +14,7 @@ public:
 	void setElement(int i, int j, double value);
 
 	Matrix add(Matrix another) const;
+	Matrix multiply(Matrix another) const;
 private:
 	int rows = 0;
 	int cols = 0;
