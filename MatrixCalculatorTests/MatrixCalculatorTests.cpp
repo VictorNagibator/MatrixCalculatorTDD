@@ -232,5 +232,18 @@ namespace MatrixCalculatorTests
 			Assert::AreEqual(9.0, c.getElement(2, 2));
 			Assert::AreEqual(0.0, c.getElement(0, 1)); // не установлено, должно быть 0
 		}
+
+		TEST_METHOD(SparseAddAnother)
+		{
+			SparseMatrix a(3, 3);
+
+			SparseMatrix b(3, 3);
+			b.setElement(0, 0, 4);
+
+			SparseMatrix c = a.add(b);
+
+			Assert::AreEqual(4.0, c.getElement(0, 0));
+			Assert::AreEqual(0.0, c.getElement(0, 1));
+		}
 	};
 }
