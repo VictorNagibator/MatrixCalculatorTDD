@@ -8,4 +8,7 @@ public:
 
 	int getRows() const;
 	int getCols() const;
+private:
+	int rows = 0;
+	int cols = 0;
 };
