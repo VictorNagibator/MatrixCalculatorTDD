@@ -34,3 +34,14 @@ void Matrix::setElement(int i, int j, double value)
 
 	data[i * cols + j] = value;
 }
+
+Matrix Matrix::add(Matrix another) const
+{
+	// todo: проверка размеров
+
+	Matrix result(rows, cols);
+	for (int i = 0; i < rows; ++i)
+		for (int j = 0; j < cols; ++j)
+			result.setElement(i, j, getElement(i, j) + another.getElement(i, j));
+	return result;
+}
