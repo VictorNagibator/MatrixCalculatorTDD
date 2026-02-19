@@ -63,3 +63,11 @@ Matrix Matrix::multiply(Matrix another) const
 	}
 	return result;
 }
+
+Matrix Matrix::multiply(double scalar) const {
+	Matrix result(rows, cols);
+	for (int i = 0; i < rows; ++i)
+		for (int j = 0; j < cols; ++j)
+			result.setElement(i, j, getElement(i, j) * scalar);
+	return result;
+}
