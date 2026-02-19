@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "CppUnitTest.h"
 #include "../MatrixCalculator/matrix.h"
+#include "../MatrixCalculator/matrix.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -9,7 +10,6 @@ namespace MatrixCalculatorTests
 	TEST_CLASS(MatrixCalculatorTests)
 	{
 	public:
-		
 		TEST_METHOD(CanCreate)
 		{
 			Matrix m;
