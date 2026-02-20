@@ -39,16 +39,16 @@ SparseMatrix SparseMatrix::add(SparseMatrix other) const
     SparseMatrix result(rows, cols);
     // копируем все ненулевые элементы из текущей матрицы
     for (const auto& entry : data) {
-        size_t i = entry.first.first;
-        size_t j = entry.first.second;
+        int i = entry.first.first;
+        int j = entry.first.second;
         double val = entry.second;
         result.setElement(i, j, val);
     }
 
     // добавляем элементы из other
     for (const auto& entry : other.data) {
-        size_t i = entry.first.first;
-        size_t j = entry.first.second;
+        int i = entry.first.first;
+        int j = entry.first.second;
         double val = entry.second;
         double newVal = result.getElement(i, j) + val;
         result.setElement(i, j, newVal);
@@ -64,12 +64,12 @@ SparseMatrix SparseMatrix::multiply(SparseMatrix other) const {
     // для каждого ненулевого элемента a(i,k) в текущей матрице
     for (const auto& entry : data) {
         double a_val = entry.second;
-        size_t i = entry.first.first;
-        size_t k = entry.first.second;
+        int i = entry.first.first;
+        int k = entry.first.second;
         // ищем в матрице other ненулевые элементы в строке k: other(k,j)
         for (const auto& entry2 : other.data) {
             if (entry2.first.first == k) {
-                size_t j = entry2.first.second;
+                int j = entry2.first.second;
                 double b_val = entry2.second;
                 double old = result.getElement(i, j);
                 result.setElement(i, j, old + a_val * b_val);
