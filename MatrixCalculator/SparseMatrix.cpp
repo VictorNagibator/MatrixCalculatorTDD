@@ -89,8 +89,19 @@ SparseMatrix SparseMatrix::multiply(double scalar) const {
 }
 
 SparseMatrix SparseMatrix::subtract(SparseMatrix other) const {
-    // todo: add general subtract
+    if (rows != other.rows || cols != other.cols)
+        throw std::invalid_argument("SparseMatrix dimensions must match for subtraction!");
+
     SparseMatrix result(rows, cols);
-    result.setElement(0, 0, 4); result.setElement(1, 1, 5);
+    // копируем текущие элементы
+    for (const auto& entry : data) {
+        result.setElement(entry.first.first, entry.first.second, entry.second);
+    }
+
+    // вычитаем элементы other
+    for (const auto& entry : other.data) {
+        double newVal = result.getElement(entry.first.first, entry.first.second) - entry.second;
+        result.setElement(entry.first.first, entry.first.second, newVal);
+    }
     return result;
 }
