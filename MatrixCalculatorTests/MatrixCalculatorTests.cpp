@@ -287,5 +287,17 @@ namespace MatrixCalculatorTests
 			Assert::AreEqual(4.0, c.getElement(0, 0));
 			Assert::AreEqual(5.0, c.getElement(1, 1));
 		}
+
+		TEST_METHOD(SparseAnotherSubtract)
+		{
+			SparseMatrix a(1, 1);
+			a.setElement(0, 0, 6);
+
+			SparseMatrix b(1, 1);
+			b.setElement(0, 0, 1);
+
+			SparseMatrix c = a.subtract(b);
+			Assert::AreEqual(5.0, c.getElement(0, 0));
+		}
 	};
 }
