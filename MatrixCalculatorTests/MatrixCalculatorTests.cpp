@@ -299,5 +299,29 @@ namespace MatrixCalculatorTests
 			SparseMatrix c = a.subtract(b);
 			Assert::AreEqual(5.0, c.getElement(0, 0));
 		}
+
+		TEST_METHOD(SparseAddThrowsOnSizeMismatch)
+		{
+			SparseMatrix a(2, 2);
+			SparseMatrix b(3, 3);
+			auto func = [&] { a.add(b); };
+			Assert::ExpectException<std::invalid_argument>(func);
+		}
+
+		TEST_METHOD(SparseMultiplyThrowsOnSizeMismatch)
+		{
+			SparseMatrix a(2, 2);
+			SparseMatrix b(3, 2);
+			auto func = [&] { a.multiply(b); };
+			Assert::ExpectException<std::invalid_argument>(func);
+		}
+
+		TEST_METHOD(SparseSubtractThrowsOnSizeMismatch)
+		{
+			SparseMatrix a(2, 2);
+			SparseMatrix b(3, 3);
+			auto func = [&] { a.subtract(b); };
+			Assert::ExpectException<std::invalid_argument>(func);
+		}
 	};
 }
