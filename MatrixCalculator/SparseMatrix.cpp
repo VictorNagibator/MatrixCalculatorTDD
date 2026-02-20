@@ -55,3 +55,26 @@ SparseMatrix SparseMatrix::add(SparseMatrix other) const
     }
     return result;
 }
+
+SparseMatrix SparseMatrix::multiply(SparseMatrix other) const {
+    if (cols != other.rows)
+        throw std::invalid_argument("SparseMatrix dimensions incompatible for multiplication!");
+
+    SparseMatrix result(rows, other.cols);
+    // для каждого ненулевого элемента a(i,k) в текущей матрице
+    for (const auto& entry : data) {
+        double a_val = entry.second;
+        size_t i = entry.first.first;
+        size_t k = entry.first.second;
+        // ищем в матрице other ненулевые элементы в строке k: other(k,j)
+        for (const auto& entry2 : other.data) {
+            if (entry2.first.first == k) {
+                size_t j = entry2.first.second;
+                double b_val = entry2.second;
+                double old = result.getElement(i, j);
+                result.setElement(i, j, old + a_val * b_val);
+            }
+        }
+    }
+    return result;
+}
