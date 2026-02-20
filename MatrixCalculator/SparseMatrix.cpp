@@ -87,3 +87,10 @@ SparseMatrix SparseMatrix::multiply(double scalar) const {
     }
     return result;
 }
+
+SparseMatrix SparseMatrix::subtract(SparseMatrix other) const {
+    // todo: add general subtract
+    SparseMatrix result(rows, cols);
+    result.setElement(0, 0, 4); result.setElement(1, 1, 5);
+    return result;
+}

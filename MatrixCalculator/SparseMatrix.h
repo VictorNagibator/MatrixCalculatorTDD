@@ -14,6 +14,7 @@ public:
     SparseMatrix add(SparseMatrix other) const;
     SparseMatrix multiply(SparseMatrix other) const;
     SparseMatrix multiply(double scalar) const;
+    SparseMatrix subtract(SparseMatrix other) const;
 private:
     int rows = 0, cols = 0;
 
