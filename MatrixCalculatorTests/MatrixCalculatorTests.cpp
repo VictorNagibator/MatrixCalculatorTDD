@@ -263,5 +263,16 @@ namespace MatrixCalculatorTests
 			Assert::AreEqual(20.0, c.getElement(1, 1));
 			Assert::AreEqual(0.0, c.getElement(0, 1));
 		}
+
+		TEST_METHOD(SparseMultiplyByScalar)
+		{
+			SparseMatrix a(2, 2);
+			a.setElement(0, 0, 1); a.setElement(1, 1, 3);
+			SparseMatrix c = a.multiply(2.5);
+
+			Assert::AreEqual(2.5, c.getElement(0, 0));
+			Assert::AreEqual(7.5, c.getElement(1, 1));
+			Assert::AreEqual(0.0, c.getElement(0, 1));
+		}
 	};
 }
