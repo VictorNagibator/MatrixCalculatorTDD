@@ -78,3 +78,12 @@ SparseMatrix SparseMatrix::multiply(SparseMatrix other) const {
     }
     return result;
 }
+
+SparseMatrix SparseMatrix::multiply(double scalar) const {
+    SparseMatrix result(rows, cols);
+
+    for (const auto& entry : data) {
+        result.setElement(entry.first.first, entry.first.second, entry.second * scalar);
+    }
+    return result;
+}

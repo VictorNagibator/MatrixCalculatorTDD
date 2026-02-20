@@ -13,6 +13,7 @@ public:
     void setElement(int i, int j, double value);
     SparseMatrix add(SparseMatrix other) const;
     SparseMatrix multiply(SparseMatrix other) const;
+    SparseMatrix multiply(double scalar) const;
 private:
     int rows = 0, cols = 0;
 
