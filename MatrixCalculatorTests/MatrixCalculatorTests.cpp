@@ -323,5 +323,36 @@ namespace MatrixCalculatorTests
 			auto func = [&] { a.subtract(b); };
 			Assert::ExpectException<std::invalid_argument>(func);
 		}
+
+		TEST_METHOD(SparseDeterminant2x2)
+		{
+			SparseMatrix m(2, 2);
+			m.setElement(0, 0, 1);
+			m.setElement(0, 1, 2);
+			m.setElement(1, 0, 3);
+			m.setElement(1, 1, 4);
+			double det = m.determinant();
+
+			Assert::AreEqual(-2.0, det); // 1*4 - 2*3 = -2
+		}
+
+		TEST_METHOD(SparseDeterminant3x3)
+		{
+			SparseMatrix m(3, 3);
+			m.setElement(0, 0, 6); m.setElement(0, 1, 1); m.setElement(0, 2, 1);
+			m.setElement(1, 0, 4); m.setElement(1, 1, -2); m.setElement(1, 2, 5);
+			m.setElement(2, 0, 2); m.setElement(2, 1, 8); m.setElement(2, 2, 7);
+			double det = m.determinant();
+
+			Assert::AreEqual(-306.0, det); // как в тесте для плотной матрицы
+		}
+
+		TEST_METHOD(SparseDeterminantThrowsOnNonSquare)
+		{
+			SparseMatrix m(2, 3);
+			auto func = [&] { m.determinant(); };
+
+			Assert::ExpectException<std::invalid_argument>(func);
+		}
 	};
 }
