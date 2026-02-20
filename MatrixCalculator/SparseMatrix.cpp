@@ -1,4 +1,5 @@
 #include "SparseMatrix.h"
+#include "Matrix.h"
 #include <stdexcept>
 
 SparseMatrix::SparseMatrix(int rows, int cols)
@@ -104,4 +105,24 @@ SparseMatrix SparseMatrix::subtract(SparseMatrix other) const {
         result.setElement(entry.first.first, entry.first.second, newVal);
     }
     return result;
+}
+
+double SparseMatrix::determinant() const {
+    if (rows != cols)
+        throw std::invalid_argument("Determinant is defined only for square matrices!");
+
+    // создаём обычную матрицу того же размера
+    Matrix dense(rows, cols);
+
+    // заполняем её элементами
+    for (const auto& entry : data) {
+        int i = entry.first.first;
+        int j = entry.first.second;
+        double val = entry.second;
+        dense.setElement(i, j, val);
+    }
+    // элементы, не присутствующие в data, уже инициализированы нулями в конструкторе Matrix
+
+    // вычисляем определитель с помощью метода плотной матрицы
+    return dense.determinant();
 }
